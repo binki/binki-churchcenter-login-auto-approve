@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name binki-churchcenter-login-auto-approve
 // @homepageURL https://github.com/binki/binki-churchcenter-login-auto-approve
-// @version 1.0.0
+// @version 1.0.1
 // @match https://*.churchcenter.com/*
 // @require https://raw.githubusercontent.com/binki/binki-userscript-when-element-changed-async/88cf57674ab8fcaa0e86bdf5209342ec7780739a/binki-userscript-when-element-changed-async.js
 // @require https://raw.githubusercontent.com/binki/binki-userscript-when-event-dispatched-async/0daa1c0c3501aeba7132d520aa8f389e0627aba6/binki-userscript-when-event-dispatched-async.js
