@@ -4,12 +4,19 @@
 // @version 1.0.2
 // @match https://*.churchcenter.com/*
 // @require https://raw.githubusercontent.com/binki/binki-userscript-when-element-changed-async/88cf57674ab8fcaa0e86bdf5209342ec7780739a/binki-userscript-when-element-changed-async.js
+// @require https://github.com/binki/binki-userscript-when-input-completed/raw/d11bfc5021cb99fd80d5a2d008ffd4c7eabaf554/binki-userscript-when-input-completed.js
 // ==/UserScript==
 
 (async () => {
   while (true) {
     // Wait for the URL to be right.
     if (window.location.pathname.startsWith('/login')) {
+      // Check if we are at the code entry screen.
+      const sixDigitCodeInput = document.getElementById('six_digit_code');
+      if (sixDigitCodeInput) {
+        await whenInputCompletedAsync(sixDigitCodeInput, undefined, 6);
+        sixDigitCodeInput.closest('form').querySelector('button[type=submit], button:not([type])').click();
+      }
       // There is really no programmatic clue as to what the right button to click is. Try our best?
       const mainPageContent = document.getElementById('main_page_content');
       if (mainPageContent && mainPageContent.querySelectorAll('input').length === 0 && mainPageContent.querySelectorAll('button').length === 2 && mainPageContent.querySelectorAll('button > span').length === 1) {
